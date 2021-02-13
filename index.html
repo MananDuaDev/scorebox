@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SCOREBOX</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Spirax" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;400;600;700;900&display=swap" rel="stylesheet">  
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://underscorejs.org/underscore-min.js"></script>
+    <script type="text/javascript" src="script/main.js"></script>
+</head>
+
+<body  ng-app="scoreBoxApp" ng-controller="scoreBoxCtrl" class="container-fluid nopadding1 textstyle">
+    <div class="scorebox-page main row nopadding ">
+        <header class="col-md-12 nopadding logoback" >
+            <img class=" sb-icon col-md-12 nopadding" src="logo.png">
+           
+        </header>
+        <a class="text-center ">
+         
+            <div class="col-md-12 highlight nopadding1 text-center center ">
+                <h3 class=" textstyle1 textcolor1">{{teamDetail1.team_name}} v {{teamDetail2.team_name}}, Match 2, Women's National Cricket League, 02-03rd February</h3>
+            <div class="highlight-text"></div>
+            <div class="col-md-12 ">
+              <div class="col-md-6 highlight-text1">
+                
+                <img class="col-md-2 t1-img" src="t1.png">  
+                <div class="col-md-4 t1-text text-right">
+                  <h4 class="textstyle1 textcolor1" >{{teamDetail1.team_score}}</h4>
+                  <h4 class="textstyle1 textcolor2">{{teamDetail1.team_name}}</h4>
+                
+              </div>
+              
+              </div>
+              <div class="col-md-6 highlight-text2">
+                <img class="col-md-2 t2-img" src="t2.jpg">
+                <div class="col-md-4 t2-text text-left">
+                  <h4 class="textstyle1 textcolor1">{{teamDetail2.team_score}}</h4>
+                  <h4 class="textstyle1 textcolor2">{{teamDetail2.team_name}}</h4>
+                
+              </div>
+              </div>
+            </div>
+            <div class="text-center col-md-12 highlight-text3 textstyle3 textcolor1">Tasmania Women won by 20 runs.</div>
+          </div>
+        </a>
+        <div class="col-md-12 highlight  bgcolor">
+            <div >
+              <a class="tabtext highlight-text4 col-md-2 t2-text" >LIVE</a>
+              <a class="tabtext1 highlight5 highlight-text4 text-center col-md-2" >SCORECARD</a>
+              <a class="tabtext highlight-text4 text-center col-md-2" >COMMENTARY</a>
+              <a class="tabtext highlight-text4 text-center col-md-2" >PLAYING XI</a>
+              <a class="tabtext highlight-text4 text-center col-md-2" >STATISTICS</a>
+            </div>
+          </div>
+          <div class="col-md-12 highlight"  ng-hide="hideteam" >
+            <div class="col-md-6 text-center nopadding2  name-style1 textstyle1" >
+              <a class="textcolor2" ng-click="teamDetail(true)">{{teamDetail1.team_name}}</a>
+            </div>
+            <div class="col-md-6 text-center nopadding2  name-style  textstyle1">
+              <a class="tabtext" ng-click="teamDetail(true)">{{teamDetail2.team_name}}</a>
+            </div>
+            </div>
+            <div class="col-md-12 highlight" ng-hide="!hideteam" >
+              <div ng-click="teamDetail(true)" class="col-md-6 text-center nopadding2  name-style textstyle1">
+                <a class="tabtext">{{teamDetail1.team_name}}</a>
+              </div>
+              <div ng-click="teamDetail(true)" class="col-md-6 text-center nopadding2  name-style1 textstyle1">
+                <a class="textcolor2" >{{teamDetail2.team_name}}</a>
+              </div>
+              </div>
+              <div class="col-md-12 nopadding" ng-hide="hideteam">
+                <div class="col-md-12 textcolor2 textstyle31 highlight2 ">
+                <h4 class="col-md-7 textstyle31">BATTING</h4>
+                <h4 class=" col-md-1 textstyle31">R</h4>
+                <h4 class=" col-md-1 textstyle31">B</h4>
+                <h4 class=" col-md-1 textstyle31">4s</h4>
+                <h4 class=" col-md-1 textstyle31">6s</h4>
+                <h4 class=" col-md-1 textstyle31">SR</h4>
+                
+              </div>
+                <div ng-repeat="playing1 in teamDetail1.playing" class="col-md-12 highlight1">
+                  <h4 class="col-md-3 textstyle132 textcolor3">{{playing1.player_name}}</h4>
+                  <h4 class="col-md-4  textcolor4">{{playing1.info}}</h4>
+                  <h4 class="col-md-1 textstyle31 ">{{playing1.r}}</h4>
+                  <h4 class="col-md-1 textstyle13">{{playing1.b}}</h4>
+                  <h4 class="col-md-1 textstyle13">{{playing1.four}}</h4>
+                  <h4 class="col-md-1 textstyle13">{{playing1.six}}</h4>
+                  <h4 class="col-md-1 textstyle13 ">{{playing1.sr}}</h4>
+                </div >
+                <div class="col-md-12 highlight1">
+                  <h4 class="col-md-12 textcolor2 textstyle31">Extra</h4>
+                </div>
+                <div class="col-md-12 highlight1">
+                 <h4 class="col-md-12 textcolor2 textstyle31">Total</h4>
+                </div>
+              </div>
+              <div class="col-md-12 nopadding" ng-hide="hideteam">
+                <div class="col-md-12 textcolor2 textstyle31 highlight2">  
+                <h4 class="col-md-7 textstyle31" >BOWLING</h4>
+                <h4 class="col-md-1 textstyle31" >W</h4>
+                <h4 class="col-md-1 textstyle31" >O</h4>
+                <h4 class="col-md-1 textstyle31" >M</h4>
+                <h4 class="col-md-1 textstyle31" >R</h4>
+                <h4 class="col-md-1 textstyle31" >ECON</h4>
+              </div>
+               <div ng-repeat="playing1 in teamDetail1.bowling" class="col-md-12 highlight1">
+                  <h4 class="col-md-7 textcolor3 textstyle132">{{playing1.bowler_name}}</h4>
+                  <h4 class="col-md-1 textstyle31">{{playing1.w}}</h4>
+                  <h4 class="col-md-1 textstyle13">{{playing1.o}}</h4>
+                  <h4 class="col-md-1 textstyle13">{{playing1.m}}</h4>
+                  <h4 class="col-md-1 textstyle13">{{playing1.r}}</h4>
+                  <h4 class="col-md-1 textstyle13">{{playing1.eco}}</h4>
+                </div>
+                <div class="col-md-12 highlight2" >
+                  <h4 class="col-md-12 textcolor2 textstyle31">Fall of wickets :</h4>
+                   </div>  
+                 
+              </div>  
+               
+                <div class="col-md-12 nopadding" ng-hide="!hideteam">
+                  <div class="col-md-12 textcolor2 textstyle31 highlight2">
+                  <h4 class="col-md-7 textstyle31">BATTING</h4>
+                  <h4 class=" col-md-1 textstyle31 ">R</h4>
+                <h4 class=" col-md-1 textstyle31">B</h4>
+                <h4 class=" col-md-1 textstyle31">4s</h4>
+                <h4 class=" col-md-1 textstyle31">6s</h4>
+                <h4 class=" col-md-1 textstyle31">SR</h4>
+              </div>
+                  <div ng-repeat="playing2 in teamDetail2.playing" class="col-md-12 highlight1">
+                    <h4 class="col-md-3 textcolor3 textstyle132">{{playing2.player_name}}</h4>
+                    <h4 class="col-md-4  textcolor4">{{playing2.info}}</h4>
+                    <h4 class="col-md-1 textstyle31">{{playing2.r}}</h4>
+                    <h4 class="col-md-1 textstyle13">{{playing2.b}}</h4>
+                    <h4 class="col-md-1 textstyle13">{{playing2.four}}</h4>
+                    <h4 class="col-md-1 textstyle13">{{playing2.six}}</h4>
+                    <h4 class="col-md-1 textstyle13">{{playing2.sr}}</h4>
+                  </div>
+                  <div class="col-md-12 highlight1">
+                    <h4 class="col-md-12 textcolor2 textstyle31">Extra</h4>
+                  </div>
+                  <div class="col-md-12 highlight1">
+                   <h4 class="col-md-12 textcolor2 textstyle31">Total</h4>
+                  </div>
+                </div>
+                <div class="col-md-12 nopadding" ng-hide="!hideteam">
+                  <div class="col-md-12 textcolor2 textstyle31 highlight2">  
+                  <h4 class="col-md-7 textstyle31 " >BOWLING</h4>
+                  <h4 class="col-md-1 textstyle31 " >W</h4>
+                  <h4 class="col-md-1 textstyle31" >O</h4>
+                  <h4 class="col-md-1 textstyle31" >M</h4>
+                  <h4 class="col-md-1 textstyle31" >R</h4>
+                  <h4 class="col-md-1 textstyle31" >ECON</h4>
+                </div>
+                 <div ng-repeat="playing2 in teamDetail2.bowling" class="col-md-12 highlight1">
+                    <h4 class="col-md-7 textstyle132">{{playing2.bowler_name}}</h4>
+                    <h4 class="col-md-1 textstyle31">{{playing2.w}}</h4>
+                    <h4 class="col-md-1 textstyle13">{{playing2.o}}</h4>
+                    <h4 class="col-md-1 textstyle13">{{playing2.m}}</h4>
+                    <h4 class="col-md-1 textstyle13">{{playing2.r}}</h4>
+                    <h4 class="col-md-1 textstyle13 ">{{playing2.eco}}</h4>
+                  </div>
+                  <div class="col-md-12 highlight2" >
+                    <h4 class="col-md-12 textcolor2 textstyle31">Fall of wickets :</h4>
+                     </div>    
+                </div>  
+                  
+            
+          
+          <div class="col-md-12 highlight2 nav">
+          <div class="col-md-12 nopadding">
+              <h3 class="col-md-12 nopadding2 textstyle1 textcolor1">Man of the Match</h3>
+              <div class="col-md-12 nopadding">
+                <div class="highlightborder12"></div>
+              </div>
+          </div>
+          
+          <div class="col-md-12 nopadding">   
+          <h4 class="col-md-12 textstyle132 textcolor3">{{mofMatch.mofm_name}}</h4>
+          </div>
+    </div>
+          <div class="col-md-12 highlight2 nav">
+            <div class="col-md-12 nopadding">
+            <h3 class="col-md-12 nopadding2 textstyle1 textcolor1 ">Match Details</h3>
+            <div class="col-md-12 nopadding">
+              <div class="highlightborder12"></div>
+            </div>
+        
+          </div>
+          
+          <div class="col-md-12 nopadding">
+           <div class="col-md-4"> <h4 class="textcolor2 textstyle31" >Date : <span class="textstyle13"> {{matchDetails.date}}</span></h4> </div>
+           <div class="col-md-4"> <h4 class="textcolor2 textstyle31" >Venue : <span class="textstyle13">{{matchDetails.venue}} </span></h4> </div>
+          <div class="col-md-4">  <h4 class="textcolor2 textstyle31" >Toss : <span class="textstyle13"> {{matchDetails.toss}} </span></h4> </div>
+           <div class="col-md-4"> <h4 class="textcolor2 textstyle31" >Umpires : </h4> </div>
+          <div class="col-md-4">  <h4 class="textcolor2 textstyle31" >Tv Umpires :</h4> </div>
+          <div class="col-md-4">  <h4  class="textcolor2 textstyle31">Match Referee : </h4> </div>
+          </div>
+        </div>
+    </div>
+</body>
+
+</html>
